@@ -23,13 +23,13 @@ const Vnavbar = () => {
             Menu
           </a>
           <a
-            href="#"
+            href="/about-us"
             className="text-lg text-center p-4 border-b border-green-700 hover:bg-green-700 transition rounded"
           >
             About
           </a>
           <a
-            href="#"
+            href="/contact-us"
             className="text-lg text-center p-4 border-b border-green-700 hover:bg-green-700 transition rounded"
           >
             Contact

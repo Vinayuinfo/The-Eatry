@@ -121,7 +121,7 @@ const Menu = () => {
                     {item.strCategoryDescription && (
                       <p className="text-gray-600 text-sm line-clamp-3">
                         {item.strCategoryDescription}
-                      </p>
+                      </p> 
                     )}
                   </div>
                 </div>
