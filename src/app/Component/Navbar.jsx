@@ -17,9 +17,9 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <button className="hidden md:block bg-yellow-400 text-green-700 px-4 py-2 rounded hover:bg-yellow-500">
-            Order Now
-          </button>
+          <Link href='/contact-us' className="hidden md:block bg-yellow-400 text-green-700 px-4 py-2 rounded hover:bg-yellow-500">
+            Contact us
+          </Link>
           <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>

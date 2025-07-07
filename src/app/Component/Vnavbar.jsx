@@ -1,36 +1,40 @@
 "use client";
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const Vnavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const pathName = usePathname()
+  
+
   return (
     <>
-      {/* <div className="hidden md:flex flex-col bg-green-800  text-white border-r-2 shadow-lg justify-between w-60"> */}
+      {/* This is pc side */}
        <div className="hidden md:flex flex-col bg-green-800 text-white w-60 border-r-2 shadow-lg min-h-[calc(100vh-80px)] fixed justify-between top-20 left-0">
         <div className="flex flex-col">
           <a
             href="/"
-            className="text-lg text-center p-4 border-b border-green-700 hover:bg-green-700 transition rounded"
+            className={`text-lg text-center p-4 border-b border-green-700 hover:bg-green-700 transition rounded ${pathName === "/" ? 'bg-green-700' : ''}`}
           >
             Home
           </a>
           <a
             href="/menu"
-            className="text-lg text-center p-4 border-b border-green-700 hover:bg-green-700 transition rounded"
+            className={`text-lg text-center p-4 border-b border-green-700 hover:bg-green-700 transition rounded ${pathName === "/menu" ? 'bg-green-700' : ''}`}
           >
             Menu
           </a>
           <a
             href="/about-us"
-            className="text-lg text-center p-4 border-b border-green-700 hover:bg-green-700 transition rounded"
+            className={`text-lg text-center p-4 border-b border-green-700 hover:bg-green-700 transition rounded ${pathName === "/about-us" ? 'bg-green-700' : ''}`}
           >
             About
           </a>
           <a
             href="/contact-us"
-            className="text-lg text-center p-4 border-b border-green-700 hover:bg-green-700 transition rounded"
+            className={`text-lg text-center p-4 border-b border-green-700 hover:bg-green-700 transition rounded ${pathName === "/contact-us" ? 'bg-green-700' : ''}`}
           >
             Contact
           </a>
@@ -47,6 +51,7 @@ const Vnavbar = () => {
         </button>
       </div>
 
+      {/* This is Mobile side */}
       {isOpen && (
         <div className="fixed inset-0 bg-green-800 z-50 flex flex-col justify-between md:hidden">
           <div className="flex flex-col">
