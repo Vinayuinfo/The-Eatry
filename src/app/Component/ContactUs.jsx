@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -37,7 +37,7 @@ const ContactUs = () => {
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Name
               </label>
-              <input
+              <Field
                 type="text"
                 name="name"
                 className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:ring-green-500 focus:border-green-500"
@@ -54,7 +54,7 @@ const ContactUs = () => {
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email
               </label>
-              <input
+              <Field
                 type="email"
                 name="email"
                 className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:ring-green-500 focus:border-green-500"
@@ -71,7 +71,7 @@ const ContactUs = () => {
               <label htmlFor="message" className="block text-sm font-medium text-gray-700">
                 Message
               </label>
-              <input
+              <Field
                 as="textarea"
                 name="message"
                 rows="4"
