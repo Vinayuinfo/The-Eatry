@@ -5,55 +5,21 @@ import Vnavbar from "./Vnavbar";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Logo from "../SvgImages/Logo";
+import { useApiContext } from "../Context/ApiContext";
 
 const Select = dynamic(() => import("react-select"), { ssr: false });
 
 const Menu = () => {
-  const [meals, setMeals] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [isCountryMode, setIsCountryMode] = useState(false);
 
-  async function onFetchMeals() {
-    setLoading(true);
-    try {
-      const response = await fetch(
-        "https://www.themealdb.com/api/json/v1/1/categories.php"
-      );
-      if (response.ok) {
-        const resData = await response.json();
-        setMeals(resData.categories || []);
-        setIsCountryMode(false);
-      } else {
-        console.log("Server error:", response.status);
-      }
-    } catch (err) {
-      console.log("Fetch error:", err);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function onFetchByCountry() {
-    if (!selectedOption) return;
-    setLoading(true);
-    try {
-      const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?a=${selectedOption.value}`
-      );
-      if (response.ok) {
-        const resData = await response.json();
-        setMeals(resData.meals || []);
-        setIsCountryMode(true);
-      } else {
-        console.log("Server error:", response.status);
-      }
-    } catch (err) {
-      console.log("Fetch error:", err);
-    } finally {
-      setLoading(false);
-    }
-  }
+  const {
+    meals,
+    loading,
+    isCountryMode,
+    setSelectedOption,
+    selectedOption,
+    onFetchMeals,
+    onFetchByCountry,
+  } = useApiContext();
 
   useEffect(() => {
     onFetchMeals();
@@ -76,7 +42,7 @@ const Menu = () => {
         <div className="flex-1 p-6 md:pl-64">
           <div className="flex justify-between items-center mb-6">
             <div className="text-lg font-semibold">
-              {isCountryMode ? `Meals By ${selectedOption.value}`  : "All Meals"}
+              {isCountryMode ? `Meals By ${selectedOption.value}` : "All Meals"}
             </div>
             <div className="w-60">
               <Select
@@ -121,7 +87,7 @@ const Menu = () => {
                     {item.strCategoryDescription && (
                       <p className="text-gray-600 text-sm line-clamp-3">
                         {item.strCategoryDescription}
-                      </p> 
+                      </p>
                     )}
                   </div>
                 </div>
@@ -135,4 +101,3 @@ const Menu = () => {
 };
 
 export default Menu;
-
