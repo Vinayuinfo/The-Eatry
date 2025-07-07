@@ -26,7 +26,7 @@ const ContactUs = () => {
         initialValues={{ name: '', email: '', message: '' }}
         validationSchema={ContactSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
+          console.log(values)
           messageSuccess()
           resetForm();
         }}
