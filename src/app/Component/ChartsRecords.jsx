@@ -24,26 +24,6 @@ const data = [
   { name: "10", Order: 868 },
   { name: "11", Order: 971 },
   { name: "12", Order: 719 },
-  { name: "13", Order: 642 },
-  { name: "14", Order: 589 },
-  { name: "15", Order: 803 },
-  { name: "16", Order: 450 },
-  { name: "17", Order: 910 },
-  { name: "18", Order: 505 },
-  { name: "19", Order: 782 },
-  { name: "20", Order: 678 },
-  { name: "21", Order: 843 },
-  { name: "22", Order: 399 },
-  { name: "23", Order: 752 },
-  { name: "24", Order: 612 },
-  { name: "25", Order: 937 },
-  { name: "26", Order: 481 },
-  { name: "27", Order: 555 },
-  { name: "28", Order: 698 },
-  { name: "29", Order: 840 },
-  { name: "30", Order: 911 },
-  { name: "31", Order: 599 },
-
 ];
 
 
