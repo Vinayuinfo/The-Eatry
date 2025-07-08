@@ -10,7 +10,6 @@ import { useApiContext } from "../Context/ApiContext";
 const Select = dynamic(() => import("react-select"), { ssr: false });
 
 const Menu = () => {
-
   const {
     meals,
     loading,
@@ -42,7 +41,7 @@ const Menu = () => {
         <div className="flex-1 p-6 md:pl-64">
           <div className="flex justify-between items-center mb-6">
             <div className="text-lg font-semibold">
-              {isCountryMode ? `Meals By ${selectedOption.value}` : "All Meals"}
+              {isCountryMode ? `Meals By ${selectedOption?.value}` : "All Meals"}
             </div>
             <div className="w-60">
               <Select
@@ -60,40 +59,50 @@ const Menu = () => {
             </div>
           </div>
 
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {meals.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
-                >
-                  {item.strMealThumb || item.strCategoryThumb ? (
-                    <Image
-                      src={item.strMealThumb || item.strCategoryThumb}
-                      alt={item.strMeal || item.strCategory}
-                      width={400}
-                      height={300}
-                      className="w-full h-64 object-cover"
-                    />
-                  ) : (
-                    <Logo />
-                  )}
-                  <div className="p-4">
-                    <h3 className="text-xl font-bold mb-2 text-green-800">
-                      {item.strMeal || item.strCategory}
-                    </h3>
-                    {item.strCategoryDescription && (
-                      <p className="text-gray-600 text-sm line-clamp-3">
-                        {item.strCategoryDescription}
-                      </p>
-                    )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {loading
+              ? Array.from({ length: 6 }).map((_, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-2xl shadow-lg overflow-hidden animate-pulse"
+                  >
+                    <div className="w-full h-64 bg-gray-300"></div>
+                    <div className="p-4 space-y-2">
+                      <div className="h-6 bg-gray-300 rounded w-3/4"></div>
+                      <div className="h-4 bg-gray-300 rounded w-full"></div>
+                      <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))
+              : meals.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+                  >
+                    {item.strMealThumb || item.strCategoryThumb ? (
+                      <Image
+                        src={item.strMealThumb || item.strCategoryThumb}
+                        alt={item.strMeal || item.strCategory}
+                        width={400}
+                        height={300}
+                        className="w-full h-64 object-cover"
+                      />
+                    ) : (
+                      <Logo />
+                    )}
+                    <div className="p-4">
+                      <h3 className="text-xl font-bold mb-2 text-green-800">
+                        {item.strMeal || item.strCategory}
+                      </h3>
+                      {item.strCategoryDescription && (
+                        <p className="text-gray-600 text-sm line-clamp-3">
+                          {item.strCategoryDescription}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+          </div>
         </div>
       </div>
     </div>
