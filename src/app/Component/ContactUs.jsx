@@ -3,7 +3,7 @@ import React from 'react';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { toast, ToastContainer } from 'react-toastify';
-import { Coins } from 'lucide-react';
+import { useCartContext } from '../Context/CartContext';
 
 const ContactUs = () => {
 
