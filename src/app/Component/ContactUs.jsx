@@ -3,6 +3,7 @@ import React from 'react';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { toast, ToastContainer } from 'react-toastify';
+import { Coins } from 'lucide-react';
 
 const ContactUs = () => {
 
@@ -25,10 +26,26 @@ const ContactUs = () => {
       <Formik
         initialValues={{ name: '', email: '', message: '' }}
         validationSchema={ContactSchema}
-        onSubmit={(values, { resetForm }) => {
-          console.log(values)
-          messageSuccess()
-          resetForm();
+        onSubmit={async(values, { resetForm }) => {
+          try{
+            const dataSubmit = await fetch('https://formspree.io/f/movwopbq', {
+              method: 'POST',
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(values)
+            })
+            if(dataSubmit.ok){
+              messageSuccess()
+              resetForm()
+            }else{
+              toast.error("Something Went Wrong!")
+            }
+          }catch(err){
+            console.log(err)
+            toast.error("Form Submitting error")
+          }
+          console.log("Values>>", values)
         }}
       >
         {({ isSubmitting }) => (

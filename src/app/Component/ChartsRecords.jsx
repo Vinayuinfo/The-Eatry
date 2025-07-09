@@ -12,18 +12,18 @@ import {
 } from "recharts";
 
 const data = [
-  { name: "1", Order: 315 },
-  { name: "2", Order: 456 },
-  { name: "3", Order: 761 },
-  { name: "4", Order: 271 },
-  { name: "5", Order: 789 },
-  { name: "6", Order: 673 },
-  { name: "7", Order: 372 },
-  { name: "8", Order: 695 },
-  { name: "9", Order: 711 },
-  { name: "10", Order: 868 },
-  { name: "11", Order: 971 },
-  { name: "12", Order: 719 },
+  { name: "JAN", Order: 315 },
+  { name: "FEB", Order: 456 },
+  { name: "MAR", Order: 761 },
+  { name: "APR", Order: 271 },
+  { name: "MAY", Order: 789 },
+  { name: "JUNE", Order: 673 },
+  { name: "JULY", Order: 372 },
+  { name: "AUG", Order: 695 },
+  { name: "SEP", Order: 711 },
+  { name: "OCT", Order: 868 },
+  { name: "NOV", Order: 971 },
+  { name: "DEC", Order: 719 },
 ];
 
 
